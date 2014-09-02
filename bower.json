@@ -1,12 +1,12 @@
 {
   "name": "dawa-autocomplete",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Anders Hessellund Jensen <ahj@trifork.com>"
   ],
   "description": "Autocomplete komponent for indtastning af adresse",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "main": "dawa-autocomplete.js",
   "ignore": [
     "**/.*",
