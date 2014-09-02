@@ -1,0 +1,22 @@
+{
+  "name": "dawa-autocomplete",
+  "version": "0.1.0",
+  "authors": [
+    "Anders Hessellund Jensen <ahj@trifork.com>"
+  ],
+  "description": "Autocomplete komponent for indtastning af adresse",
+  "license": "MIT",
+  "private": true,
+  "main": "dawa-autocomplete.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "jquery-ui": "~1.11.1"
+  }
+}
