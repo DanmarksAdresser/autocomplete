@@ -76,6 +76,7 @@ $.widget( "dawa.dawaautocomplete", {
         }
         else if (item.adgangsadresse) {
           if (options.adgangsadresserOnly) {
+            element.val(item.tekst);
             autocompleteWidget._trigger('select', null, item);
             return;
           }
