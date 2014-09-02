@@ -5,7 +5,8 @@ $.widget( "dawa.dawaautocomplete", {
     minLength: 2,
     delay: 0,
     adgangsadresserOnly: false,
-    autoFocus: true
+    autoFocus: true,
+    params: {}
   },
 
 
@@ -23,7 +24,7 @@ $.widget( "dawa.dawaautocomplete", {
       $.ajax({
         url: options.baseUrl + path,
         dataType: options.jsonp ? "jsonp" : "json",
-        data: params,
+        data: $.extend({}, params, options.params),
         success: function(data) {
           if(cache) {
             cache[ stringifiedParams] = data;

@@ -31,6 +31,7 @@ $('#myInput').dawaautocomplete({
   minLength: 2,
   delay: 0,
   adgangsadresserOnly: false,
+  params: {},
   select: function(event, adresse) {
     // denne funktion bliver kaldt når brugeren vælger en adresse.
   }
@@ -41,6 +42,7 @@ Det er muligt at angive følgende options:
  - <strong>jsonp</strong>: Anvend JSONP i stedet for JSON (default false)
  - <strong>baseUrl</strong>: URL til API (default http://dawa.aws.dk)
  - <strong>minLength</strong>: Antal karakterer, der skal være tastet for autocomplete vises (default 2)
+ - <strong>params</strong>: Angiver yderligere parametre (eksempelvis postnr, kommunekode), som sendes med ved kald til DAWA
  - <strong>adgangsadresserOnly</strong>: Angiver, at der indtastes en adgangsadresse og ikke en fuld adresse (default: false)
 
 ## Events
