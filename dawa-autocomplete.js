@@ -33,6 +33,11 @@ $.widget( "dawa.dawaautocomplete", {
       });
     }
 
+    var caches = [{}, {}, {}];
+    var paths = ['/vejnavne/autocomplete', '/adgangsadresser/autocomplete', '/adresser/autocomplete'];
+
+    var prevSearch = "", prevResultType = 0;
+
     // perform an autocomplete GET request to DAWA.
     // If there is at most one result, continue to next type.
     // We autocomplete through vejnavne, adgangsadresser and adresser.
@@ -50,11 +55,6 @@ $.widget( "dawa.dawaautocomplete", {
         }
       });
     }
-
-    var caches = [{}, {}, {}];
-    var paths = ['/vejnavne/autocomplete', '/adgangsadresser/autocomplete', '/adresser/autocomplete'];
-
-    var prevSearch = "", prevResultType = 0;
 
     var autocompleteOptions = $.extend({}, options, {
       source: function (request, response) {
@@ -76,15 +76,19 @@ $.widget( "dawa.dawaautocomplete", {
         }
         else if (item.adgangsadresse) {
           if (options.adgangsadresserOnly) {
-            autocompleteWidgets._trigger('select', null, item);
+            autocompleteWidget._trigger('select', null, item);
             return;
           }
           var addr = item.adgangsadresse;
+          // We need to check if there is more than one
+          // adresse associated with the adgangsadresse.
           get(
             '/adresser/autocomplete',
             { adgangsadresseid: item.adgangsadresse.id }, null,
             function (data) {
               if (data.length > 1) {
+                // Wee need to set the caret at the appropriate position
+                // for entering etage and dør
                 var textBefore = addr.vejnavn + ' ' + addr.husnr + ', ';
                 var textAfter = ' ';
                 if (addr.supplerendebynavn) {
