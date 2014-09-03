@@ -8,7 +8,7 @@ afhængigheder end JQuery denne komponent.
 Du kan se en demo af komponenten på [dawa.aws.dk](http://dawa.aws.dk).
 
 ## Installation
-Komponenten kan installeres via bower:
+Komponenten kan installeres via [bower](bower.io):
 ```
 bower install dawa-autocomplete
 ```

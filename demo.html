@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>DAWA autocomplete demo</title>
+  </head>
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/start/jquery-ui.css">
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/start/theme.css">
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+  <script src="bower_components/jquery-ui/ui/autocomplete.js"></script>
+  <script src="dawa-autocomplete.js"></script>
+<body>
+<p>Autocomplete af adresse</p>
+<input type="text" id="adresse-autocomplete" style="width: 400px;">
+<p>Valgt adresse: <span id="adresse-choice"></span></p>
+<p>Autocomplete af adgangsadresse</p>
+<input type="text" id="adgangsadresse-autocomplete" style="width: 400px;">
+<p>Valgt adgangsadresse: <span id="adgangsadresse-choice"></span></p>
+<p>Autocomplete af adresse i københavn</p>
+<input type="text" id="adresse-autocomplete-kbh" style="width: 400px;">
+<p>Valgt adresse: <span id="adresse-choice-kbh"></span></p>
+</body>
+<script>
+  $('#adresse-autocomplete').dawaautocomplete({
+    select: function(event, data) {
+      $('#adresse-choice').text(data.tekst);
+    }
+  });
+  $('#adgangsadresse-autocomplete').dawaautocomplete({
+    adgangsadresserOnly: true,
+    select: function(event, data) {
+      $('#adgangsadresse-choice').text(data.tekst);
+    }
+  });
+  $('#adresse-autocomplete-kbh').dawaautocomplete({
+    params: {
+      kommunekode: 101
+    },
+    select: function(event, data) {
+      $('#adresse-choice-kbh').text(data.tekst);
+    }
+  });
+</script>
+</html>
