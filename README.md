@@ -39,7 +39,8 @@ $('#myInput').dawaautocomplete({
 ```
 ## Options
 Det er muligt at angive følgende options:
- - <strong>jsonp</strong>: Anvend JSONP i stedet for JSON (default false)
+ - <strong>jsonp</strong>: Anvend JSONP i stedet for JSON (som default anvendes JSON hvis CORS er supporteret af 
+ browseren).
  - <strong>baseUrl</strong>: URL til API (default http://dawa.aws.dk)
  - <strong>minLength</strong>: Antal karakterer, der skal være tastet for autocomplete vises (default 2)
  - <strong>params</strong>: Angiver yderligere parametre (eksempelvis postnr, kommunekode), som sendes med ved kald til DAWA

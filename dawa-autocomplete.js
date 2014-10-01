@@ -1,6 +1,6 @@
 $.widget( "dawa.dawaautocomplete", {
   options: {
-    jsonp: false,
+    jsonp: !("withCredentials" in (new XMLHttpRequest())),
     baseUrl: 'http://dawa.aws.dk',
     minLength: 2,
     delay: 0,
