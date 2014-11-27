@@ -6,6 +6,8 @@ $.widget( "dawa.dawaautocomplete", {
     delay: 0,
     adgangsadresserOnly: false,
     autoFocus: true,
+    timeout: null,
+    error: null,
     params: {}
   },
 
@@ -25,12 +27,14 @@ $.widget( "dawa.dawaautocomplete", {
         url: options.baseUrl + path,
         dataType: options.jsonp ? "jsonp" : "json",
         data: $.extend({}, params, options.params),
+        timeout: options.timeout,
         success: function(data) {
           if(cache) {
             cache[ stringifiedParams] = data;
           }
           cb(data);
-        }
+        },
+        error: options.error
       });
     }
 

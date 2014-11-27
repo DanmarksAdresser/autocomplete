@@ -45,6 +45,8 @@ Det er muligt at angive følgende options:
  - <strong>minLength</strong>: Antal karakterer, der skal være tastet for autocomplete vises (default 2)
  - <strong>params</strong>: Angiver yderligere parametre (eksempelvis postnr, kommunekode), som sendes med ved kald til DAWA
  - <strong>adgangsadresserOnly</strong>: Angiver, at der indtastes en adgangsadresse og ikke en fuld adresse (default: false)
+ - <strong>timeout</strong>: Parameter til jQuery.ajax(): Antal millisekunder der ventes på svar fra serveren før der gives op (default: null)
+ - <strong>error</strong>: Parameter til jQuery.ajax(): Callback-funktion ved fejl eller timeout. (default: null).
 
 ## Events
 DAWA Autocomplete udsender følgende events:
