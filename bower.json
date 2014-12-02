@@ -2,7 +2,8 @@
   "name": "dawa-autocomplete",
   "version": "0.3.0",
   "authors": [
-    "Anders Hessellund Jensen <ahj@trifork.com>"
+    "Anders Hessellund Jensen <ahj@trifork.com>",
+    "Jakob Roesgaard Færch <jrf@trifork.com>"
   ],
   "description": "Autocomplete komponent for indtastning af adresse",
   "license": "MIT",
