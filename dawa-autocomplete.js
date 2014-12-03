@@ -6,7 +6,7 @@ $.widget( "dawa.dawaautocomplete", {
     delay: 0,
     adgangsadresserOnly: false,
     autoFocus: true,
-    timeout: null,
+    timeout: 10000,
     error: null,
     params: {}
   },
@@ -129,7 +129,7 @@ $.widget( "dawa.dawaautocomplete", {
         .append( item.tekst )
         .appendTo( ul );
     };
-    element.on("autocompletefocus", function( event, ui ) {
+    element.on("autocompletefocus", function(event) {
       event.preventDefault();
     });
   }

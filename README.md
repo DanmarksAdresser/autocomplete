@@ -49,7 +49,7 @@ Det er muligt at angive følgende options:
  - <strong>minLength</strong>: Antal karakterer, der skal være tastet for autocomplete vises (default 2)
  - <strong>params</strong>: Angiver yderligere parametre (eksempelvis postnr, kommunekode), som sendes med ved kald til DAWA
  - <strong>adgangsadresserOnly</strong>: Angiver, at der indtastes en adgangsadresse og ikke en fuld adresse (default: false)
- - <strong>timeout</strong>: Antal millisekunder der ventes på svar fra serveren før der gives op (default: null)
+ - <strong>timeout</strong>: Antal millisekunder der ventes på svar fra serveren før der gives op (default: 10000)
  - <strong>error</strong>: Callback-funktion ved fejl eller timeout. (default: null). Se
      [JQuery's dokumentation](http://api.jquery.com/jquery.ajax/) for en beskrivelse af parametre til funktionen
 
