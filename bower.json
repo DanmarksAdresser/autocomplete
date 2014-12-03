@@ -6,6 +6,7 @@
     "Jakob Roesgaard Færch <jrf@trifork.com>"
   ],
   "description": "Autocomplete komponent for indtastning af adresse",
+  "homepage": "https://github.com/DanmarksAdresser/autocomplete",
   "license": "MIT",
   "private": false,
   "main": "dawa-autocomplete.js",
