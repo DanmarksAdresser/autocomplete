@@ -32,8 +32,12 @@ $('#myInput').dawaautocomplete({
   delay: 0,
   adgangsadresserOnly: false,
   params: {},
+  timeout: 10000,
   select: function(event, adresse) {
     // denne funktion bliver kaldt når brugeren vælger en adresse.
+  }
+  error: function(xhr, status, error) {
+    // denne funktion bliver kaldt ved fejl
   }
 });
 ```
@@ -46,8 +50,10 @@ Det er muligt at angive følgende options:
  - <strong>params</strong>: Angiver yderligere parametre (eksempelvis postnr, kommunekode), som sendes med ved kald til DAWA
  - <strong>adgangsadresserOnly</strong>: Angiver, at der indtastes en adgangsadresse og ikke en fuld adresse (default: false)
  - <strong>timeout</strong>: Antal millisekunder der ventes på svar fra serveren før der gives op (default: null)
- - <strong>error</strong>: Callback-funktion ved fejl eller timeout. (default: null).
+ - <strong>error</strong>: Callback-funktion ved fejl eller timeout. (default: null). Se
+     [JQuery's dokumentation](http://api.jquery.com/jquery.ajax/) for en beskrivelse af parametre til funktionen
 
 ## Events
 DAWA Autocomplete udsender følgende events:
  - <strong>select</strong>: Når brugeren har valgt en adresse
+ - <strong>error</strong>: Ved fejl under kald af DAWA.
