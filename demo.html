@@ -26,6 +26,9 @@
   $('#adresse-autocomplete').dawaautocomplete({
     select: function(event, data) {
       $('#adresse-choice').text(data.tekst);
+    },
+    error: function(xhr, status, error) {
+      alert('Der opstod en fejl: ' + status + " - " + error);
     }
   });
   $('#adgangsadresse-autocomplete').dawaautocomplete({
