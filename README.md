@@ -2,8 +2,8 @@
 DAWA autocomplete er en JavaScript komponent, som giver mulighed for at indtaste en dansk adresse i ét input-felt
 ved hjælp af autocomplete. [Komponenten anvender Danmarks Adressers Web API (DAWA)](http://dawa.aws.dk).
 
-Komponenten er baseret på JQueryUI's [autocomplete widget](http://api.jqueryui.com/autocomplete/), men har ingen andre
-afhængigheder end JQuery denne komponent.
+Komponenten er baseret på JQueryUI's [autocomplete widget](http://api.jqueryui.com/autocomplete/). Den har ingen andre
+afhængigheder end JQuery.
 
 Du kan se en demo af komponenten på [dawa.aws.dk](http://dawa.aws.dk).
 
