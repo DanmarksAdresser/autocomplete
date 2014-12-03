@@ -56,4 +56,4 @@ Det er muligt at angive følgende options:
 ## Events
 DAWA Autocomplete udsender følgende events:
  - <strong>select</strong>: Når brugeren har valgt en adresse
- - <strong>error</strong>: Ved fejl under kald af DAWA.
+ - <strong>error</strong>: Ved fejl under kald af DAWA
