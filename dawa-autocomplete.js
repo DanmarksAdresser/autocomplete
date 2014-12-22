@@ -93,7 +93,7 @@ $.widget( "dawa.dawaautocomplete", {
             { adgangsadresseid: item.adgangsadresse.id }, null,
             function (data) {
               if (data.length > 1) {
-                // Wee need to set the caret at the appropriate position
+                // We need to set the caret at the appropriate position
                 // for entering etage and dør
                 var textBefore = addr.vejnavn + ' ' + addr.husnr + ', ';
                 var textAfter = ' ';
