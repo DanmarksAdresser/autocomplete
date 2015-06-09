@@ -31,6 +31,11 @@
 
 <hr>
 
+<p><label for="adresse-autocomplete-8000">Autocomplete af adresse i postnummer 8000 Aarhus C</label></p>
+<input type="text" id="adresse-autocomplete-8000" style="width: 400px;">
+<p>Valgt adresse: <span id="adresse-choice-8000"></span></p>
+
+<hr>
 </body>
 <script>
   $('#adresse-autocomplete').dawaautocomplete({
@@ -53,6 +58,14 @@
     },
     select: function(event, data) {
       $('#adresse-choice-kbh').text(data.tekst);
+    }
+  });
+  $('#adresse-autocomplete-8000').dawaautocomplete({
+    params: {
+      postnr: 8000
+    },
+    select: function(event, data) {
+      $('#adresse-choice-8000').text(data.tekst);
     }
   });
 </script>
