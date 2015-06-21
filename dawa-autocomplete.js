@@ -19,6 +19,7 @@ $.widget("dawa.dawaautocomplete", {
 		var autocompleteWidget = this;
 		var caretpos = null;
 		var adgangsadresseid = null;
+		var skipVejnavn = false;
 
 		var cache = {};
 
@@ -46,6 +47,11 @@ $.widget("dawa.dawaautocomplete", {
 			if(adgangsadresseid) {
 				params.adgangsadresseid = adgangsadresseid;
 			}
+			if(skipVejnavn) {
+				params.startfra = 'adgangsadresse';
+			}
+			skipVejnavn = false;
+
 			var adgangsadresseRestricted = !!adgangsadresseid;
 
 			// Vi begrænser kun til en bestemt adgangsadresseid én gang
@@ -80,6 +86,9 @@ $.widget("dawa.dawaautocomplete", {
 					if(item.type === 'adgangsadresse') {
 						adgangsadresseid = item.data.id;
 					}
+					if(item.type === 'vejnavn') {
+						skipVejnavn = true;
+					}
 					setTimeout(function () {
 						element.autocomplete('search');
 					});
@@ -99,7 +108,7 @@ $.widget("dawa.dawaautocomplete", {
 			event.preventDefault();
 		});
 		// der er tilsyneladende ingen skudsikker måde at få en event når
-		// cursor positionen ændrer sig, så vi benytter en timer i stedet.
+		// caret positionen ændrer sig, så vi benytter en timer i stedet.
 		setInterval(function() {
 			var currentCaretpos = element[0].selectionStart;
 			if(element[0] === document.activeElement && caretpos !== currentCaretpos) {
