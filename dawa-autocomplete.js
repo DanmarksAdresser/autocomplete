@@ -8,9 +8,9 @@ $.widget("dawa.dawaautocomplete", {
 		autoFocus: true,
 		timeout: 10000,
 		error: null,
-		params: {}
+		params: {},
+		fuzzy: true
 	},
-
 
 	_create: function () {
 		var element = this.element;
@@ -44,6 +44,9 @@ $.widget("dawa.dawaautocomplete", {
 
 		function getAutocompleteResponse(type, q, currentCaretPos, cb) {
 			var params = {q: q, type: type, caretpos: currentCaretPos};
+			if(options.fuzzy) {
+				params.fuzzy = '';
+			}
 			if(adgangsadresseid) {
 				params.adgangsadresseid = adgangsadresseid;
 			}
