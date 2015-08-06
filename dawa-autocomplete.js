@@ -9,7 +9,8 @@ $.widget("dawa.dawaautocomplete", {
 		timeout: 10000,
 		error: null,
 		params: {},
-		fuzzy: true
+		fuzzy: true,
+		stormodtagerpostnumre: true
 	},
 
 	_create: function () {
@@ -42,6 +43,28 @@ $.widget("dawa.dawaautocomplete", {
 			});
 		}
 
+		function stormodtagerAdresseTekst(data) {
+			var adresse = data.vejnavn;
+			if(data.husnr) {
+				adresse += ' ' + data.husnr;
+			}
+			if(data.etage || data.dør) {
+				adresse += ',';
+			}
+			if(data.etage) {
+				adresse += ' ' + data.etage + '.';
+			}
+			if(data.dør) {
+				adresse += ' ' + data.dør;
+			}
+			adresse += ', ';
+			if(data.supplerendebynavn) {
+				adresse += data.supplerendebynavn + ', ';
+			}
+			adresse += data.stormodtagerpostnr + ' ' + data.stormodtagerpostnrnavn;
+			return adresse;
+		}
+
 		function getAutocompleteResponse(type, q, currentCaretPos, cb) {
 			var params = {q: q, type: type, caretpos: currentCaretPos};
 			if(options.fuzzy) {
@@ -61,15 +84,46 @@ $.widget("dawa.dawaautocomplete", {
 			adgangsadresseid = null;
 
 			get(params, function(result) {
-				if(adgangsadresseRestricted && result.length === 1) {
+				var processedResult = result.reduce(function(memo, row) {
+					if((row.type === 'adgangsadresse' || row.type === 'adresse') && row.data.stormodtagerpostnr) {
+						// Vi har modtaget et stormodtagerpostnr. Her vil vi muligvis gerne vise stormodtagerpostnummeret
+						var stormodtagerEntry = jQuery.extend({}, row);
+						stormodtagerEntry.tekst = stormodtagerAdresseTekst(row.data);
+						stormodtagerEntry.forslagstekst = stormodtagerEntry.tekst;
+
+						var rows = [];
+						// Omvendt, hvis brugeren har indtastet den almindelige adresse eksakt, så er der ingen
+						// grund til at vise stormodtagerudgaven
+						if(q !== stormodtagerEntry.tekst) {
+							rows.push(row);
+						}
+
+						// Hvis brugeren har indtastet stormodtagerudgaven af adressen eksakt, så viser vi
+						// ikke den almindelige udgave
+						if(q !== row.tekst) {
+							rows.push(stormodtagerEntry);
+						}
+
+						// brugeren har indtastet stormodtagerpostnummeret, såvi viser stormodtager udgaven først.
+						if(rows.length > 1 && q.indexOf(row.data.stormodtagerpostnr) !== -1) {
+							rows = [rows[1], rows[0]];
+						}
+						memo = memo.concat(rows);
+					}
+					else {
+						memo.push(row);
+					}
+					return memo;
+				}, []);
+				if(adgangsadresseRestricted && processedResult.length === 1) {
 					// der er kun en adresse på adgangsadressen
-					element.val(result[0].tekst);
-					element.selectionStart = caretpos = result[0].caretpos;
+					element.val(processedResult[0].tekst);
+					element.selectionStart = caretpos = processedResult[0].caretpos;
 					element.autocomplete('close');
-					autocompleteWidget._trigger('select', null, result[0]);
+					autocompleteWidget._trigger('select', null, processedResult[0]);
 				}
 				else {
-					cb(result);
+					cb(processedResult);
 				}
 			});
 		}
