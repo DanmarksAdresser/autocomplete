@@ -35,7 +35,7 @@ $('#myInput').dawaautocomplete({
   timeout: 10000,
   select: function(event, adresse) {
     // denne funktion bliver kaldt når brugeren vælger en adresse.
-  }
+  },
   error: function(xhr, status, error) {
     // denne funktion bliver kaldt ved fejl
   }
