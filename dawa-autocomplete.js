@@ -158,7 +158,7 @@ $.widget("dawa.dawaautocomplete", {
 		});
 		element.autocomplete(autocompleteOptions).data("ui-autocomplete")._renderItem = function (ul, item) {
 			return $("<li></li>")
-				.append(item.forslagstekst)
+				.append(item.forslagstekst || item.tekst)
 				.appendTo(ul);
 		};
 		element.on("autocompletefocus", function (event) {
