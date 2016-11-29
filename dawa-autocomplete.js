@@ -114,7 +114,12 @@ $.widget("dawa.dawaautocomplete", {
 						memo.push(row);
 					}
 					return memo;
-				}, []);
+				}, []).map(function(row) {
+					return {
+						label: row.forslagstekst,
+						value: row
+					}
+				});
 				if(adgangsadresseRestricted && processedResult.length === 1) {
 					// der er kun en adresse på adgangsadressen
 					element.val(processedResult[0].tekst);
@@ -136,7 +141,7 @@ $.widget("dawa.dawaautocomplete", {
 			},
 			select: function (event, ui) {
 				event.preventDefault();
-				var item = ui.item;
+				var item = ui.item.value;
 				element.val(item.tekst);
 				element[0].selectionStart = element[0].selectionEnd = caretpos = item.caretpos;
 				if(item.type !== targetType) {
@@ -156,11 +161,7 @@ $.widget("dawa.dawaautocomplete", {
 				}
 			}
 		});
-		element.autocomplete(autocompleteOptions).data("ui-autocomplete")._renderItem = function (ul, item) {
-			return $("<li></li>")
-				.append(item.forslagstekst)
-				.appendTo(ul);
-		};
+		element.autocomplete(autocompleteOptions);
 		element.on("autocompletefocus", function (event) {
 			event.preventDefault();
 		});

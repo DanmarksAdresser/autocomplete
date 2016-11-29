@@ -1,17 +1,18 @@
-<!doctype html> 
+<!doctype html>
 <html>
   <meta charset="utf-8">
   <head>
     <title>DAWA autocomplete demo</title>
   </head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="bower_components/jquery-ui/themes/start/jquery-ui.css">
-  <link rel="stylesheet" href="bower_components/jquery-ui/themes/start/theme.css">
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/theme.css">
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/autocomplete.css">
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-  <script src="bower_components/jquery-ui/ui/autocomplete.js"></script>
+  <script src="bower_components/jquery-ui/ui/widgets/autocomplete.js"></script>
   <script src="dawa-autocomplete.js"></script>
-<body>
+<body class="ui-widget">
 
 <p><label for="adresse-autocomplete">Autocomplete af adresse</label></p>
 <input type="text" id="adresse-autocomplete" style="width: 400px;">
@@ -36,8 +37,9 @@
 <p>Valgt adresse: <span id="adresse-choice-8000"></span></p>
 
 <hr>
+
 </body>
-<script>
+  <script>
   $('#adresse-autocomplete').dawaautocomplete({
     select: function(event, data) {
       $('#adresse-choice').text(data.tekst);
