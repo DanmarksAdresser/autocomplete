@@ -122,10 +122,10 @@ $.widget("dawa.dawaautocomplete", {
 				});
 				if(adgangsadresseRestricted && processedResult.length === 1) {
 					// der er kun en adresse på adgangsadressen
-					element.val(processedResult[0].tekst);
-					element.selectionStart = caretpos = processedResult[0].caretpos;
+					element.val(processedResult[0].value.tekst);
+					element.selectionStart = caretpos = processedResult[0].value.caretpos;
 					element.autocomplete('close');
-					autocompleteWidget._trigger('select', null, processedResult[0]);
+					autocompleteWidget._trigger('select', null, processedResult[0].value);
 				}
 				else {
 					cb(processedResult);
