@@ -1,3 +1,7 @@
+# *** NY VERSION ***
+Der er lavet en ny og forbedret version af DAWA autocomplete, som kan findes [her](https://github.com/DanmarksAdresser/dawa-autocomplete2). Vi anbefaler alle at anvende den nye version af DAWA autocomplete.
+
+Denne udgave af DAWA autocomplete bliver ikke længere videreudviklet.
 # DAWA Autocomplete
 DAWA autocomplete er en JavaScript komponent, som giver mulighed for at indtaste en dansk adresse i ét input-felt
 ved hjælp af autocomplete. [Komponenten anvender Danmarks Adressers Web API (DAWA)](http://dawa.aws.dk).
